@@ -1,7 +1,16 @@
-import React from "react";
+import React from 'react';
+import { Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import AppRoutes from './routes';
 
-function App() {
-  return <h1>GoSurvey</h1>;
-}
+const history = createBrowserHistory(); // TO DO: move to services folder
+
+const App = () => {
+  return (
+    <Router history={history}>
+      <AppRoutes />
+    </Router>
+  );
+};
 
 export default App;
