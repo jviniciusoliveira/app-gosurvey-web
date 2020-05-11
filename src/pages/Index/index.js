@@ -1,5 +1,9 @@
 import React from 'react';
 
-const Index = () => <h1>GoSurvey</h1>;
+import SurveyList from '../../components/SurveyList';
+
+const Index = () => {
+  return <SurveyList />;
+};
 
 export default Index;
