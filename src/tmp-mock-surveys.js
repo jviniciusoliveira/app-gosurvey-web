@@ -1,9 +1,4 @@
-import React from 'react';
-import Grid from '@material-ui/core/Grid';
-
-import Card from './Card';
-
-const mockPolls = [
+const mockSurveys = [
   {
     _id: 1,
     title: 'Enquete',
@@ -48,16 +43,4 @@ const mockPolls = [
   },
 ];
 
-const SurveyList = () => {
-  return (
-    <Grid container justify="center" spacing={5}>
-      {mockPolls.map((survey) => (
-        <Grid item key={survey._id}>
-          <Card survey={survey} />
-        </Grid>
-      ))}
-    </Grid>
-  );
-};
-
-export default SurveyList;
+export default mockSurveys;
