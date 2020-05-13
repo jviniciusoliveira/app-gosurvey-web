@@ -9,8 +9,11 @@ import {
   MuiThemeProvider,
   Container,
   Avatar,
+  Link,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import NoteAddIcon from '@material-ui/icons/NoteAdd';
 
 import Details from './pages/survey/Details';
 import SurveyList from './pages/survey/List';
@@ -35,6 +38,19 @@ const useStyles = makeStyles({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  title: {
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  icons: {
+    display: 'flex',
+  },
+  avatar: {
+    marginLeft: '15px',
+  },
+  moreIcon: {
+    marginLeft: '15px',
+  },
 });
 
 const App = () => {
@@ -46,8 +62,20 @@ const App = () => {
         <Router history={history}>
           <AppBar className={classes.appBar} position="fixed">
             <Toolbar className={classes.toolbar}>
-              <Typography variant="h6">Go Survey</Typography>
-              <Avatar alt="Login" src={DefaultAvatar} />
+              <Typography variant="h4" className={classes.title}>
+                <Link href="/" color="inherit">
+                  GoSurvey
+                </Link>
+              </Typography>
+              <div className={classes.icons}>
+                <NoteAddIcon fontSize="large" />
+                <MoreVertIcon fontSize="large" className={classes.moreIcon} />
+                <Avatar
+                  alt="Login"
+                  src={DefaultAvatar}
+                  className={classes.avatar}
+                />
+              </div>
             </Toolbar>
           </AppBar>
           <main className={classes.content}>

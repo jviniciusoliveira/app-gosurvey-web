@@ -7,6 +7,7 @@ import {
   FormControlLabel,
   Radio,
   Button,
+  Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -42,15 +43,22 @@ const Details = () => {
     <Container maxWidth="md" className={classes.root}>
       <div className={classes.sideRoot}>
         <img src={DefaultImage} alt="" />
-        <h3>Titulo da Enquete</h3>
-        <p>
+        <Typography variant="subtitle1" gutterBottom>
+          Titulo da Enquete
+        </Typography>
+        <hr />
+        <Typography variant="subtitle1" gutterBottom>
           Participe da enquete e deixe sua opinião para ajudar outras pessoas a
           tomaram suas decisões.
-        </p>
-        <p>Expira em: 25/05/2020 às 22h</p>
-        <p>Criada por: José Vinicius</p>
+        </Typography>
+        <hr />
+        <Typography variant="body1" gutterBottom>
+          Expira em: 25/05/2020 às 22h
+        </Typography>
+        <Typography variant="caption" display="block" gutterBottom>
+          Criada por: José Vinicius
+        </Typography>
       </div>
-
       <div className={classes.sideRoot}>
         <FormControl component="fieldset">
           <FormLabel component="legend" className={classes.FormLabel}>

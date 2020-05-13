@@ -1,5 +1,4 @@
 import { createMuiTheme } from '@material-ui/core';
-import { cyan } from '@material-ui/core/colors';
 
 const defaultTheme = createMuiTheme({
   palette: {
@@ -8,7 +7,7 @@ const defaultTheme = createMuiTheme({
       paper: '#fafafa',
     },
     primary: {
-      main: cyan['500'],
+      main: '#00434D',
     },
   },
 });
