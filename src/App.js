@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import Details from './pages/survey/details/Info';
+import Details from './pages/survey/Details';
 import SurveyList from './pages/survey/List';
 
 import DefaultAvatar from './assets/images/default-avatar.png';

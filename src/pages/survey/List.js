@@ -60,7 +60,7 @@ const List = () => {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button size="small" color="primary">
+                <Button href="/details" size="small" color="primary">
                   Detalhes
                 </Button>
               </CardActions>
