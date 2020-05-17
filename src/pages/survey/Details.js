@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import DefaultImage from '../../assets/images/default-survey.jpg';
+import DefaultImage from '../../assets/images/default-survey-img.png';
 
 const useStyles = makeStyles({
   root: {
