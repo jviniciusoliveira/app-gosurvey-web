@@ -1,8 +1,8 @@
 import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { createBrowserHistory } from 'history';
 
+import history from './utils/history';
 import Styles from './styles';
 
 import SurveyDetails from './pages/survey/Details';
@@ -11,7 +11,7 @@ import SurveyForm from './pages/survey/Form';
 
 import DefaultAvatar from './assets/images/default-avatar.png';
 import MoreVertIcon from './assets/images/icon-more-vert.svg';
-import NoteAddIcon from './assets/images/icon-note-add.svg';
+import AddIcon from './assets/images/icon-note-add.svg';
 
 const Header = styled.header`
   width: 100%;
@@ -40,12 +40,10 @@ const AppBar = styled.nav`
 
     a {
       padding: 10px;
-      margin-left: 15px;
+      margin-left: 25px;
     }
   }
 `;
-
-const history = createBrowserHistory(); // TO DO: move to services folder
 
 const App = () => {
   return (
@@ -54,13 +52,23 @@ const App = () => {
         <Styles />
         <Header>
           <AppBar className="container">
-            <h1>GoSurvey</h1>
+            <Link to="/">
+              <h1>GoSurvey</h1>
+            </Link>
             <div>
               <a href="/">
-                <img src={NoteAddIcon} alt="" />
+                <img
+                  src={AddIcon}
+                  alt=""
+                  style={{ width: '18px', height: '18px' }}
+                />
               </a>
               <a href="/">
-                <img src={MoreVertIcon} alt="" />
+                <img
+                  src={MoreVertIcon}
+                  alt=""
+                  style={{ width: '6px', height: '18px' }}
+                />
               </a>
               <a href="/">
                 <img src={DefaultAvatar} alt="" />

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import history from '../../utils/history';
+
 import DefaultImage from '../../assets/images/default-survey-img.png';
 import SurveyImage from '../../assets/images/survey-img.jpg';
 import mockSurveys from '../../tmp-mock-surveys';
@@ -81,6 +83,10 @@ const Title = styled.h2`
 `;
 
 const List = () => {
+  const handleLinkDetails = () => {
+    history.push('/details');
+  };
+
   return (
     <div className="container">
       <Title>Enquetes</Title>
@@ -92,7 +98,9 @@ const List = () => {
             <div>
               <h3>{survey.title}</h3>
               <p>{survey.description}</p>
-              <button>{survey.past ? 'RESULTADO' : 'PARTICIPAR'}</button>
+              <button onClick={handleLinkDetails}>
+                {survey.past ? 'RESULTADO' : 'PARTICIPAR'}
+              </button>
             </div>
           </Card>
         ))}
