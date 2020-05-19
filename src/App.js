@@ -56,7 +56,7 @@ const App = () => {
               <h1>GoSurvey</h1>
             </Link>
             <div>
-              <a href="/">
+              <a href="/add">
                 <img
                   src={AddIcon}
                   alt=""

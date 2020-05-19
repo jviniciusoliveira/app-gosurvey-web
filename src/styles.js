@@ -17,7 +17,7 @@ export default createGlobalStyle`
     background: #fdfdfd;
   }
 
-  body, input, button {
+  body, input, button, textarea {
     font: 14px 'Roboto', sans-serif;
   }
 
