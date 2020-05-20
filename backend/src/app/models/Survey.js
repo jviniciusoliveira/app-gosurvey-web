@@ -10,8 +10,6 @@ class Survey extends Model {
       },
       { sequelize }
     );
-
-    return this;
   }
 }
 

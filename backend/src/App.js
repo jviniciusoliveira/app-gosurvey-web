@@ -3,6 +3,7 @@ import SurveyController from './app/controllers/Survey';
 
 import Sequelize from 'sequelize';
 import SurveyModel from './app/models/Survey';
+import ResponseModel from './app/models/Response';
 import { resolve } from 'path';
 
 class App {
@@ -38,7 +39,8 @@ class App {
     }
 
     SurveyModel.init(sequelize);
-    //SurveyModel.sync();
+    ResponseModel.init(sequelize);
+    //await sequelize.sync({ force: true });
   }
 }
 
