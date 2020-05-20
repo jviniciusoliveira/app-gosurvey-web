@@ -22,15 +22,13 @@ sequelize
   });
 
 SurveyModel.init(sequelize);
-SurveyModel.sync();
+//SurveyModel.sync();
 
 const app = express();
 
-app.get('/', async (request, response) => {
-  const surveys = await SurveyModel.findAll();
-  return response.send(surveys);
-});
+app.use(express.json());
 
-app.get('/test', SurveyController.index);
+app.get('/', SurveyController.index);
+app.post('/add', SurveyController.store);
 
 app.listen(3333);
