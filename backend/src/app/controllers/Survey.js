@@ -1,7 +1,7 @@
 import Survey from '../models/Survey';
 
 class SurveyController {
-  index(request, response) {
+  async index(request, response) {
     const surveys = await Survey.findAll();
 
     return response.json(surveys);

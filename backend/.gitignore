@@ -24,3 +24,4 @@ yarn-error.log*
 
 # DB
 *.sqlite
+*.sqlite3
