@@ -40,6 +40,9 @@ class App {
 
     SurveyModel.init(sequelize);
     ResponseModel.init(sequelize);
+
+    SurveyModel.associate(ResponseModel);
+    ResponseModel.associate(SurveyModel);
     //await sequelize.sync({ force: true });
   }
 }

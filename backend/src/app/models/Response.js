@@ -1,5 +1,4 @@
 import Sequelize, { Model } from 'sequelize';
-import Survey from './Survey';
 
 class Response extends Model {
   static init(sequelize) {
@@ -11,9 +10,11 @@ class Response extends Model {
       { sequelize }
     );
 
-    this.belongsTo(Survey, { foreignKey: 'survey_id' });
-
     return this;
+  }
+
+  static associate(model) {
+    this.belongsTo(model, { foreignKey: 'survey_id', as: 'survey' });
   }
 }
 

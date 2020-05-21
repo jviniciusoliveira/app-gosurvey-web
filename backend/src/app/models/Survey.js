@@ -10,6 +10,12 @@ class Survey extends Model {
       },
       { sequelize }
     );
+
+    return this;
+  }
+
+  static associate(model) {
+    this.hasMany(model, { foreignKey: 'survey_id', as: 'responses' });
   }
 }
 
