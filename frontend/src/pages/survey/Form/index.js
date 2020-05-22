@@ -4,7 +4,6 @@ import Input from '../../../components/Input';
 import TextArea from '../../../components/TextArea';
 import Answers from './Answers';
 import { Title, Form } from './styles';
-import IconAdd from '../../../assets/images/icon-add.png';
 
 const SurveyForm = () => {
   const handleSubmit = dataForm => {
@@ -29,9 +28,6 @@ const SurveyForm = () => {
         <label>Respostas</label>
         <Answers />
 
-        <button className="btn-add" type="button">
-          <img src={IconAdd} alt="" />
-        </button>
         <button className="btn" type="submit">
           Gravar
         </button>
