@@ -1,9 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
+import { Form as UnForm } from '@unform/web';
 
-import IconAdd from '../../assets/images/icon-add.png';
-
-const Title = styled.h2`
+export const Title = styled.h2`
   text-align: center;
   font-style: normal;
   font-weight: normal;
@@ -12,7 +10,7 @@ const Title = styled.h2`
   margin-bottom: 24px;
 `;
 
-const Form = styled.form`
+export const Form = styled(UnForm)`
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
@@ -82,36 +80,3 @@ const Form = styled.form`
     }
   }
 `;
-
-const SurveyForm = () => {
-  return (
-    <div className="container">
-      <Title>Cadastrar enquete</Title>
-      <Form>
-        <label htmlFor="title">Título</label>
-        <input type="text" id="title" />
-
-        <label htmlFor="description">Descrição</label>
-        <textarea name="" id="description" cols="30" rows="10"></textarea>
-
-        <label htmlFor="date">Data encerramento</label>
-        <input type="date" id="date" />
-
-        <hr />
-
-        <label>Respostas</label>
-        <input type="text" />
-        <input type="text" />
-
-        <button className="btn-add" type="button">
-          <img src={IconAdd} alt="" />
-        </button>
-        <button className="btn" type="button">
-          Gravar
-        </button>
-      </Form>
-    </div>
-  );
-};
-
-export default SurveyForm;

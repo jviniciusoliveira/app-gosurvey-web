@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import history from './utils/history';
 import Styles from './styles';
 
-import SurveyDetails from './pages/survey/Details';
-import SurveyList from './pages/survey/List';
-import SurveyForm from './pages/survey/Form';
+import SurveyDetails from './pages/Survey/Details';
+import SurveyList from './pages/Survey/List';
+import SurveyForm from './pages/Survey/Form';
 
 import DefaultAvatar from './assets/images/default-avatar.png';
 import MoreVertIcon from './assets/images/icon-more-vert.svg';
