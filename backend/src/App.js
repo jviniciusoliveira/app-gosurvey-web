@@ -1,9 +1,12 @@
 import express from 'express';
-import SurveyController from './app/controllers/Survey';
+import upload from './lib/multer';
+
+import SurveyController from './app/controllers/SurveyController';
 
 import Sequelize from 'sequelize';
 import SurveyModel from './app/models/Survey';
 import ResponseModel from './app/models/Response';
+import FileModel from './app/models/File';
 import { resolve } from 'path';
 
 class App {
@@ -15,10 +18,15 @@ class App {
 
   init() {
     this.server.use(express.json());
+    this.server.use(
+      '/files',
+      express.static(resolve(__dirname, '..', 'tmp', 'uploads'))
+    );
 
     // routes
     this.server.get('/', SurveyController.index);
-    this.server.post('/add', SurveyController.store);
+    this.server.post('/add', upload.single('file'), SurveyController.store);
+    this.server.get('/files');
 
     this.sequelize();
   }
@@ -40,8 +48,9 @@ class App {
 
     SurveyModel.init(sequelize);
     ResponseModel.init(sequelize);
+    FileModel.init(sequelize);
 
-    SurveyModel.associate(ResponseModel);
+    SurveyModel.associate(ResponseModel, FileModel);
     ResponseModel.associate(SurveyModel);
     //await sequelize.sync({ force: true });
   }

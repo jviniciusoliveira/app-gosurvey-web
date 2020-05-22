@@ -25,3 +25,5 @@ yarn-error.log*
 # DB
 *.sqlite
 *.sqlite3
+
+tmp/uploads

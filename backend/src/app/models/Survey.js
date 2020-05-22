@@ -14,8 +14,12 @@ class Survey extends Model {
     return this;
   }
 
-  static associate(model) {
-    this.hasMany(model, { foreignKey: 'survey_id', as: 'responses' });
+  static associate(responseModel, fileModel) {
+    this.hasMany(responseModel, {
+      foreignKey: 'survey_id',
+      as: 'responses',
+    });
+    this.belongsTo(fileModel, { foreignKey: 'image_id', as: 'image' });
   }
 }
 
