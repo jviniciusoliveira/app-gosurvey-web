@@ -14,7 +14,7 @@ class SurveyController {
         {
           model: File,
           as: 'image',
-          attributes: ['id', 'url'],
+          attributes: ['id', 'path', 'url'],
         },
       ],
       attributes: ['id', 'title', 'description', 'expire', 'createdAt'],
@@ -25,29 +25,33 @@ class SurveyController {
 
   async store(request, response) {
     const { originalname: name, filename: path } = request.file;
-    const { title, description, expire, responses } = request.body;
+    const { title, expire, answers } = request.body;
 
-    const responsesParsed = JSON.parse(responses);
+    const answersParsed = JSON.parse(answers);
 
-    const { id, url } = await File.create({
+    console.log(path);
+
+    const { id } = await File.create({
       name,
       path,
     });
 
     const survey = await Survey.create({
       title,
-      description,
       expire: new Date(expire),
       image_id: id,
     });
 
-    responsesParsed.map(async response => {
-      await Response.create({
-        survey_id: survey.id,
-        response,
-        votes: 0,
-      });
-    });
+    for (let answer in answersParsed) {
+      async function setAnswer() {
+        await Response.create({
+          survey_id: survey.id,
+          response: answersParsed[answer],
+          votes: 0,
+        });
+      }
+      setAnswer();
+    }
 
     return response.status(201).json(survey);
   }
