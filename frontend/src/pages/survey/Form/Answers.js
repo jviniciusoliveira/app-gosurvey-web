@@ -5,7 +5,7 @@ import IconAdd from '../../../assets/images/icon-add.png';
 
 const Answers = () => {
   const [fieldAnswer, setFieldAnswer] = useState([
-    <Input key={1} name={`answer-1}`} />,
+    <Input key={1} name={`answer-1`} />,
   ]);
 
   const handleClick = () => {
