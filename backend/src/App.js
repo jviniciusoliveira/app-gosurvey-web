@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import upload from './lib/multer';
 
 import SurveyController from './app/controllers/SurveyController';
@@ -18,6 +19,7 @@ class App {
 
   init() {
     this.server.use(express.json());
+    this.server.use(cors());
     this.server.use(
       '/files',
       express.static(resolve(__dirname, '..', 'tmp', 'uploads'))
@@ -25,7 +27,7 @@ class App {
 
     // routes
     this.server.get('/', SurveyController.index);
-    this.server.post('/add', upload.single('file'), SurveyController.store);
+    this.server.post('/add', upload.single('image'), SurveyController.store);
     this.server.get('/files');
 
     this.sequelize();
