@@ -3,13 +3,11 @@ import api from '../../../utils/api';
 
 import Input from '../../../components/Input';
 import ImageInput from '../../../components/ImageInput';
-//import ImageInput from '../../../components/ImageInput2';
 import Answers from './Answers';
 import { Title, Form } from './styles';
 
 const SurveyForm = () => {
   const formRef = useRef();
-  const coverRef = useRef(null);
 
   const handleSubmit = async data => {
     try {
@@ -23,7 +21,7 @@ const SurveyForm = () => {
       const response = await api.post('/add', formData);
 
       console.log(response);
-      formRef.reset();
+      formRef.current.reset();
     } catch (err) {
       console.log(err);
     }
