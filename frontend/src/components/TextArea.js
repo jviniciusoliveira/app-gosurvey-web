@@ -9,10 +9,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const TextArea = ({ name, label }) => {
+const TextArea = ({ name, label, ...rest }) => {
   const classes = useStyles();
   const inputRef = useRef(null);
-  const { fieldName, registerField } = useField(name);
+  const { fieldName, defaultValue, registerField } = useField(name);
 
   useEffect(() => {
     registerField({
@@ -22,15 +22,18 @@ const TextArea = ({ name, label }) => {
     });
   }, [fieldName, registerField]);
 
-  return (
-    <TextField
-      className={classes.field}
-      name={name}
-      id={name}
-      label={label}
-      multiline
-    />
-  );
+  const inputProps = {
+    inputRef,
+    id: fieldName,
+    name,
+    label,
+    defaultValue,
+    fullWidth: true,
+    autoComplete: 'off',
+    ...rest,
+  };
+
+  return <TextField className={classes.field} multiline {...inputProps} />;
 };
 
 export default TextArea;
