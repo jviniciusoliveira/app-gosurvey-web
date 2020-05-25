@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useImperativeHandle, forwardRef } from 'react';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -7,12 +7,16 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-export default function MaterialUIPickers() {
+const InputDate = (props, ref) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const handleDateChange = date => {
     setSelectedDate(date);
   };
+
+  useImperativeHandle(ref, () => ({
+    getData: () => selectedDate,
+  }));
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -43,4 +47,6 @@ export default function MaterialUIPickers() {
       </Grid>
     </MuiPickersUtilsProvider>
   );
-}
+};
+
+export default forwardRef(InputDate);
