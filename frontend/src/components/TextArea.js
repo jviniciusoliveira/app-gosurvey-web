@@ -1,7 +1,16 @@
 import React, { useRef, useEffect } from 'react';
 import { useField } from '@unform/core';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
-const TextArea = ({ name }) => {
+const useStyles = makeStyles(theme => ({
+  field: {
+    marginBottom: '15px',
+  },
+}));
+
+const TextArea = ({ name, label }) => {
+  const classes = useStyles();
   const inputRef = useRef(null);
   const { fieldName, registerField } = useField(name);
 
@@ -13,7 +22,15 @@ const TextArea = ({ name }) => {
     });
   }, [fieldName, registerField]);
 
-  return <textarea ref={inputRef}></textarea>;
+  return (
+    <TextField
+      className={classes.field}
+      name={name}
+      id={name}
+      label={label}
+      multiline
+    />
+  );
 };
 
 export default TextArea;

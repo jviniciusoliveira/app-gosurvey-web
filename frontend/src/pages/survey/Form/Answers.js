@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Scope } from '@unform/core';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 import Input from '../../../components/Input';
-import IconAdd from '../../../assets/images/icon-add.png';
 
 const Answers = () => {
   const [fieldAnswer, setFieldAnswer] = useState([
-    <Input key={1} name={`answer-1`} />,
+    <Input key={1} name={`answer-1`} label="Opção 1" />,
   ]);
 
   const handleClick = () => {
@@ -13,16 +14,16 @@ const Answers = () => {
 
     setFieldAnswer([
       ...fieldAnswer,
-      <Input key={field} name={`answer-${field}`} />,
+      <Input key={field} name={`answer-${field}`} label={`Opção ${field}`} />,
     ]);
   };
 
   return (
     <Scope path="answers">
-      <div>{fieldAnswer}</div>
-      <button className="btn-add" type="button" onClick={handleClick}>
-        <img src={IconAdd} alt="" />
-      </button>
+      {fieldAnswer}
+      <Fab size="medium" color="primary" aria-label="add" onClick={handleClick}>
+        <AddIcon />
+      </Fab>
     </Scope>
   );
 };

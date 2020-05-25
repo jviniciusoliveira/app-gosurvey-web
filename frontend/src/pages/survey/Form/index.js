@@ -2,9 +2,11 @@ import React, { useRef } from 'react';
 import api from '../../../utils/api';
 
 import Input from '../../../components/Input';
-import ImageInput from '../../../components/ImageInput';
+import InputImage from '../../../components/InputImage';
+import TextArea from '../../../components/TextArea';
+import InputDate from '../../../components/InputDate';
 import Answers from './Answers';
-import { Title, Form } from './styles';
+import { Title, SubTitle, Form, Button } from './styles';
 
 const SurveyForm = () => {
   const formRef = useRef();
@@ -14,6 +16,7 @@ const SurveyForm = () => {
       const formData = new FormData();
 
       formData.append('title', data.title);
+      formData.append('description', data.description);
       formData.append('image', data.image);
       formData.append('expire', data.expire);
       formData.append('answers', JSON.stringify(data.answers));
@@ -29,25 +32,26 @@ const SurveyForm = () => {
 
   return (
     <div className="container">
-      <Title>Cadastrar enquete</Title>
+      <Title variant="h5" gutterBottom>
+        Cadastrar enquete
+      </Title>
       <Form ref={formRef} onSubmit={handleSubmit}>
-        <label htmlFor="title">Pergunta</label>
-        <Input name="title" id="title" />
+        <Input name="title" label="Pergunta" />
 
-        <label htmlFor="image">Imagem</label>
-        <ImageInput name="image" />
+        <TextArea name="description" label="Descrição" />
 
-        <label htmlFor="expire">Data encerramento</label>
-        <Input name="expire" type="date" id="expire" />
+        <InputDate name="expire" id="expire" />
 
-        <hr />
+        <InputImage name="image" label="Imagem" />
 
-        <label>Respostas</label>
+        <SubTitle variant="h6" gutterBottom>
+          Respostas
+        </SubTitle>
         <Answers />
 
-        <button className="btn" type="submit">
-          Gravar
-        </button>
+        <Button variant="outlined" size="large" color="primary" type="submit">
+          Publicar
+        </Button>
       </Form>
     </div>
   );
