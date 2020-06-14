@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import DefaultDetailsImage from '../../assets/images/default-details.png';
+import DefaultDetailsImage from '../../../assets/images/default-details.png';
 
 const Title = styled.h2`
   font-style: normal;

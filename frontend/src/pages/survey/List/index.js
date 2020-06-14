@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import history from '../../utils/history';
+import history from '../../../utils/history';
 
-import DefaultImage from '../../assets/images/default-survey-img.png';
-import SurveyImage from '../../assets/images/survey-img.jpg';
-import mockSurveys from '../../tmp-mock-surveys';
+import DefaultImage from '../../../assets/images/default-survey-img.png';
+import SurveyImage from '../../../assets/images/survey-img.jpg';
+import mockSurveys from '../../../tmp-mock-surveys';
 
 const Ul = styled.ul`
   display: grid;

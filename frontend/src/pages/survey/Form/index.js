@@ -1,30 +1,36 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import api from '../../../utils/api';
 
-import Input from '../../../components/Input';
-import InputImage from '../../../components/InputImage';
-import TextArea from '../../../components/TextArea';
-import InputDate from '../../../components/InputDate';
+//import { InputText, InputDate, InputImage } from '../../../components/Inputs';
+import InputText from '../../../components/Inputs/Input';
+import InputDate from '../../../components/Inputs/InputDate';
+import InputImage from '../../../components/Inputs/InputImage';
 import Answers from './Answers';
 import { Title, SubTitle, Form, Button } from './styles';
 
 const SurveyForm = () => {
   const formRef = useRef();
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const handleSubmit = async data => {
+  const handleSubmit = async form => {
     try {
+      const data = {
+        ...form,
+        expire: selectedDate,
+      };
       const formData = new FormData();
 
       formData.append('title', data.title);
       formData.append('description', data.description);
       formData.append('image', data.image);
-      formData.append('expire', data.expire);
+      formData.append('expire', selectedDate);
       formData.append('answers', JSON.stringify(data.answers));
 
-      const response = await api.post('/add', formData);
+      //const response = await api.post('/add', formData);
 
-      console.log(response);
-      formRef.current.reset();
+      console.log(data);
+      //console.log(formData);
+      //formRef.current.reset();
     } catch (err) {
       console.log(err);
     }
@@ -36,11 +42,13 @@ const SurveyForm = () => {
         Cadastrar enquete
       </Title>
       <Form ref={formRef} onSubmit={handleSubmit}>
-        <Input name="title" label="Pergunta" />
+        <InputText name="title" label="Pergunta" />
 
-        <TextArea name="description" label="Descrição" />
-
-        <InputDate name="expire" id="expire" />
+        <InputDate
+          name="expire"
+          label="Data/Hora encerramento"
+          handleDateChange={setSelectedDate}
+        />
 
         <InputImage name="image" label="Imagem" />
 

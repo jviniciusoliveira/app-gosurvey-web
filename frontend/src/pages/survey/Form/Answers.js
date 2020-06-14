@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Scope } from '@unform/core';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import Input from '../../../components/Input';
+import { InputText } from '../../../components/Inputs';
 
 const Answers = () => {
   const [fieldAnswer, setFieldAnswer] = useState([
-    <Input key={1} name={`answer-1`} label="Opção 1" />,
+    <InputText key={1} name={`answer-1`} label="Opção 1" />,
   ]);
 
   const handleClick = () => {
@@ -14,7 +14,11 @@ const Answers = () => {
 
     setFieldAnswer([
       ...fieldAnswer,
-      <Input key={field} name={`answer-${field}`} label={`Opção ${field}`} />,
+      <InputText
+        key={field}
+        name={`answer-${field}`}
+        label={`Opção ${field}`}
+      />,
     ]);
   };
 
